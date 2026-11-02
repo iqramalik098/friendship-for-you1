@@ -1,1 +1,431 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OPERATION 23 | PROJECT OSMIUM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --green: #00ff9d;
+    --blue: #38bdf8;
+    --purple: #a855f7;
+    --red: #ff5555;
+    --bg: #03040a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        rgba(0,255,157,.025) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    padding: 35px 23px;
+    text-align: center;
+    background: rgba(8,14,25,.96);
+    border: 1px solid #00ff9d66;
+    box-shadow: 0 0 35px #00ff9d22;
+    animation: appear .8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: clamp(28px, 7vw, 48px);
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px var(--green);
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: var(--purple);
+    margin: 20px 0;
+}
+
+.purple { color: var(--purple); }
+.blue { color: var(--blue); }
+.white { color: white; }
+
+.subtitle {
+    color: var(--blue);
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 28px;
+}
+
+.terminal {
+    background: #0c1725;
+    border-left: 3px solid var(--purple);
+    padding: 20px;
+    text-align: left;
+    line-height: 2;
+    font-size: 13px;
+    margin-bottom: 25px;
+    overflow-wrap: anywhere;
+}
+
+.terminal p:nth-child(even) {
+    color: var(--blue);
+}
+
+button {
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 14px 23px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .3s;
+    margin: 8px;
+    max-width: 100%;
+}
+
+button:hover {
+    background: var(--green);
+    color: black;
+    box-shadow: 0 0 25px var(--green);
+}
+
+input {
+    background: #03040a;
+    border: 1px solid var(--blue);
+    padding: 14px;
+    color: white;
+    font-family: inherit;
+    width: 100%;
+    max-width: 300px;
+    margin: 15px 0;
+    text-align: center;
+    outline: none;
+}
+
+input:focus {
+    box-shadow: 0 0 15px var(--blue);
+}
+
+.footer {
+    color: var(--purple);
+    font-size: 11px;
+    margin-top: 25px;
+}
+
+.progress {
+    height: 4px;
+    background: #14202c;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--green);
+    box-shadow: 0 0 12px var(--green);
+    animation: load 2s forwards;
+}
+
+@keyframes load {
+    to { width: 100%; }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.screen {
+    animation: appear .6s ease;
+}
+
+#error {
+    color: var(--red);
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.memory-item {
+    padding: 12px;
+    border: 1px solid #38bdf855;
+    margin: 10px 0;
+    color: var(--blue);
+    background: #091421;
+}
+
+.final {
+    color: white;
+    font-size: 15px;
+    line-height: 2;
+}
+
+@media(max-width:480px) {
+    .container {
+        padding: 27px 15px;
+    }
+
+    .terminal {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 13px 17px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+
+<div class="screen">
+
+<h1>OPERATION <span class="purple">23</span></h1>
+
+<p class="subtitle">PROJECT OSMIUM // CLASSIFIED</p>
+
+<div class="terminal" id="boot">
+<p>> INITIALIZING CLASSIFIED SYSTEM...</p>
+<p>> CONNECTING TO FRIENDSHIP DATABASE...</p>
+<p>> SCANNING SUBJECT IDENTITY...</p>
+<p>> SUBJECT IDENTIFIED: OSMIUM</p>
+<p>> AGE: 22</p>
+<p>> FRIENDSHIP DURATION: 2 YEARS</p>
+<p>> OVERTHINKING DETECTED: EXTREME</p>
+<p style="color:#00ff9d">> ACCESS GRANTED.</p>
+</div>
+
+<div class="progress"><span></span></div>
+
+<button onclick="start()">INITIALIZE SYSTEM →</button>
+
+<p class="footer">
+WARNING: HIGH LEVELS OF ROASTING DETECTED.
+</p>
+
+</div>
+</div>
+
+<script>
+
+const main = document.getElementById("main");
+
+function changeScreen(content) {
+    main.innerHTML = `<div class="screen">${content}</div>`;
+    window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function start() {
+
+changeScreen(`
+
+<h1>SYSTEM <span class="purple">ONLINE</span></h1>
+
+<p class="subtitle">IDENTITY VERIFICATION REQUIRED</p>
+
+<div class="terminal">
+<p>> Welcome, Subject Osmium.</p>
+<p>> Your classified files are waiting.</p>
+<p>> Security protocol activated.</p>
+<br>
+<p class="white">Enter your secret password:</p>
+</div>
+
+<input type="password" id="password"
+placeholder="ENTER PASSWORD"
+autocomplete="off">
+
+<br>
+
+<button onclick="verify()">UNLOCK FILES →</button>
+
+<p id="error"></p>
+
+<p class="footer">SECURITY LEVEL: MAXIMUM</p>
+
+`);
+
+document.getElementById("password")
+.addEventListener("keydown", function(e) {
+    if(e.key === "Enter") verify();
+});
+
+}
+
+function verify() {
+
+const password = document.getElementById("password").value;
+
+if(password === "osmium23") {
+
+changeScreen(`
+<h1 style="color:#00ff9d">ACCESS GRANTED</h1>
+<p class="subtitle">WELCOME BACK, SUBJECT OSMIUM</p>
+<div class="terminal">
+<p>> PASSWORD VERIFIED.</p>
+<p>> IDENTITY CONFIRMED.</p>
+<p>> CLASSIFIED FILES UNLOCKED.</p>
+<p>> PREPARING PSYCHOLOGICAL REPORT...</p>
+</div>
+<button onclick="report()">CONTINUE →</button>
+`);
+
+} else {
+
+document.getElementById("error").innerText =
+"ACCESS DENIED. WRONG PASSWORD.";
+
+}
+
+}
+
+function report() {
+
+changeScreen(`
+
+<h1>PSYCHOLOGICAL <span class="purple">REPORT</span></h1>
+
+<p class="subtitle">SUBJECT: OSMIUM | FILE NO. 023</p>
+
+<div class="terminal">
+<p>> AGE: 22</p>
+<p>> OVERTHINKING: 9999%</p>
+<p>> ROASTING SKILLS: DANGEROUS</p>
+<p>> EMOTIONAL INTELLIGENCE: CLASSIFIED</p>
+<p>> LOYALTY: 100%</p>
+<p>> DRAMA LEVEL: UNMEASURABLE</p>
+<br>
+<p class="white">FINAL DIAGNOSIS:</p>
+<p>A rare human specimen.</p>
+<p>Handle with sarcasm and care.</p>
+<br>
+<p style="color:#00ff9d">THREAT LEVEL: FRIENDSHIP.</p>
+</div>
+
+<button onclick="memory()">OPEN MEMORY VAULT →</button>
+
+`);
+
+}
+
+function memory() {
+
+changeScreen(`
+
+<h1>MEMORY <span class="purple">VAULT</span></h1>
+
+<p class="subtitle">TWO YEARS. COUNTLESS MEMORIES.</p>
+
+<div class="terminal">
+
+<div class="memory-item">
+> FILE 001: Our funniest moments.
+</div>
+
+<div class="memory-item">
+> FILE 002: Our stupidest conversations.
+</div>
+
+<div class="memory-item">
+> FILE 003: Things I'll always remember.
+</div>
+
+<div class="memory-item">
+> FILE 004: Things I never said.
+</div>
+
+<br>
+
+<p class="white">
+Some people become memories.<br>
+Some people become a permanent part<br>
+of your story.
+</p>
+
+</div>
+
+<button onclick="finalMessage()">OPEN FINAL FILE →</button>
+
+`);
+
+}
+
+function finalMessage() {
+
+changeScreen(`
+
+<h1>FINAL <span class="purple">FILE</span></h1>
+
+<p class="subtitle">A MESSAGE FOR OSMIUM</p>
+
+<div class="terminal final">
+
+<p>
+Two years ago, I didn't know how important
+this friendship would become.
+</p>
+
+<br>
+
+<p>
+You're a professional overthinker,
+an expert roaster and occasionally
+a walking headache.
+</p>
+
+<br>
+
+<p>
+But seriously, I hope you never forget
+that you matter, that you're apprecia
+```
 
